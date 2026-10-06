@@ -1,99 +1,627 @@
 // =============================================================================
 // layout/_doc.scss
-// Rôle : mise en page de la page composants.html (guide de style) : conteneur,
-// sections, lignes d'exemples, et présentation des jetons (couleurs, échelle
-// typographique, échelle des espacements).
+// Rôle : mise en page de la page composants.html (bibliothèque de composants) :
+// bandeau de titre, sommaire, sections, lignes d'exemples et présentation des
+// jetons (couleurs, couleurs de scène, typographie, espacements).
 // Aucune valeur en dur : tout vient des propriétés personnalisées (var(--...)).
 // Seules les VALEURS AFFICHÉES (ex. "#C8402A") sont relues dans les maps Sass,
-// car CSS ne peut pas écrire en texte la valeur d'une propriété : modifier une
+// car CSS ne sait pas écrire en texte la valeur d'une propriété : modifier une
 // map met donc la page à jour après compilation.
 // =============================================================================
 
 @use 'sass:map';
+@use 'sass:math';
 @use '../abstracts/variables' as v;
 
-// --- Page, sections et lignes d'exemples -------------------------------------
+// --- Page : bandeau de titre, sommaire, sections, lignes ---------------------
 .l-doc {
-  max-width: var(--size-container-max);
-  margin: 0 auto;
-  padding: var(--spacing-l) var(--spacing-m);
-
-  &__header {
-    margin-bottom: var(--spacing-xl);
+  &__head {
+    padding-block: var(--spacing-l);
+    background: var(--color-background-alt);
+    border-bottom: var(--border-width-thin) solid var(--color-border);
   }
 
-  &__section {
-    padding-top: var(--spacing-l);
-    margin-bottom: var(--spacing-xl);
-    border-top: var(--border-width-thin) solid var(--color-border);
+  // Conteneur centré : le contenu fait la largeur maximale, marges latérales en plus.
+  &__inner {
+    max-width: calc(var(--size-container-max) + 2 * var(--spacing-m));
+    margin-inline: auto;
+    padding-inline: var(--spacing-m);
+  }
+
+  &__crumb {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    color: var(--color-text-secondary);
+  }
+
+  &__crumb-link {
+    color: inherit;
   }
 
   &__title {
-    margin-bottom: var(--spacing-xs);
+    margin-top: var(--spacing-xs);
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
   }
 
-  &__intro {
-    margin-bottom: var(--spacing-l);
+  &__lead {
+    margin-top: var(--spacing-xs);
+    font-size: var(--font-size-m);
+    line-height: var(--line-height-m);
+    color: var(--color-text-body);
+  }
+
+  &__toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs) var(--spacing-l);
+    margin-top: var(--spacing-m);
+    padding-bottom: var(--spacing-s);
+    border-bottom: var(--border-width-thin) solid var(--color-border);
+  }
+
+  &__toc-link {
+    font-size: var(--font-size-label);
+    line-height: var(--line-height-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-primary-hover);
+      text-decoration: underline;
+    }
+  }
+
+  &__section {
+    margin-top: var(--spacing-xl);
+  }
+
+  &__section-title {
+    padding-bottom: var(--spacing-xs);
+    font-size: var(--font-size-l);
+    line-height: var(--line-height-l);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    border-bottom: var(--border-width-thick) solid var(--color-primary);
+  }
+
+  &__section-intro {
+    margin-top: var(--spacing-xs);
+    font-size: var(--font-size-s);
+    line-height: var(--line-height-s);
     color: var(--color-text-secondary);
   }
 
+  &__rows {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m);
+    margin-top: var(--spacing-l);
+  }
+
+  // Une ligne = un libellé + ses exemples. Empilés sur mobile, côte à côte dès la tablette.
   &__row {
-    margin-bottom: var(--spacing-l);
+    display: grid;
+    gap: var(--spacing-s);
+    align-items: center;
+
+    @media (min-width: map.get(v.$breakpoints, 'tablet')) {
+      grid-template-columns: var(--size-doc-label) 1fr;
+    }
   }
 
   &__label {
-    margin-bottom: var(--spacing-s);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-label);
     line-height: var(--line-height-xs);
     font-weight: var(--font-weight-bold);
-    text-transform: uppercase;
+    color: var(--color-text-primary);
+  }
+
+  &__label--spaced {
+    margin-top: var(--spacing-l);
+  }
+
+  &__examples {
+    margin-top: var(--spacing-l);
+  }
+
+  &__hint {
+    font-size: var(--font-size-xxs);
+    line-height: var(--line-height-xs);
     color: var(--color-text-secondary);
   }
 
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--size-swatch-min), 1fr));
-    gap: var(--spacing-s);
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-s) var(--spacing-l);
+
+    &--baseline {
+      align-items: baseline;
+    }
+
+    &--end {
+      align-items: flex-end;
+    }
+  }
+}
+
+// --- Boutons -----------------------------------------------------------------
+.btn {
+  position: relative;
+  display: inline-flex;
+  min-height: var(--size-button-height);
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-m);
+  border: var(--border-width-thin) solid transparent;
+  border-radius: var(--radius-small);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+
+  &:focus-visible {
+    outline: var(--border-width-thick) solid var(--color-scene-lake);
+    outline-offset: 3px;
   }
 
-  &__stack {
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &__icon {
+    font-size: var(--font-size-s);
+    line-height: 1;
+  }
+
+  &--primary {
+    color: var(--color-text-inverse);
+    background: var(--color-primary);
+
+    &:hover:not(:disabled) {
+      background: var(--color-primary-hover);
+    }
+  }
+
+  &--secondary {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    background: var(--color-background);
+
+    &:hover:not(:disabled) {
+      background: var(--color-background-alt);
+    }
+  }
+
+  &--dark {
+    color: var(--color-text-inverse);
+    background: var(--color-text-primary);
+
+    &:hover:not(:disabled) {
+      background: var(--color-text-body);
+    }
+  }
+
+  &--outline {
+    color: var(--color-text-primary);
+    border-color: var(--color-border-field);
+    background: var(--color-background);
+
+    &:hover:not(:disabled) {
+      border-color: var(--color-text-primary);
+    }
+  }
+
+  &--text {
+    min-height: auto;
+    padding-inline: 0;
+    color: var(--color-primary);
+    background: transparent;
+
+    &:hover {
+      color: var(--color-primary-hover);
+      text-decoration: underline;
+    }
+  }
+
+  &--small {
+    min-height: 36px;
+    padding: 6px var(--spacing-s);
+    font-size: var(--font-size-xxs);
+    line-height: var(--line-height-xs);
+  }
+
+  &--large {
+    min-height: 52px;
+    padding-inline: var(--spacing-l);
+    font-size: var(--font-size-s);
+  }
+
+  &--counter {
+    margin-right: var(--spacing-xs);
+  }
+}
+
+// --- Badges ------------------------------------------------------------------
+.badge {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xxs);
+  line-height: var(--line-height-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  background: var(--color-background-alt);
+  white-space: nowrap;
+
+  &--lake {
+    color: var(--color-text-inverse);
+    background: var(--color-scene-lake);
+  }
+
+  &--forest {
+    color: var(--color-text-inverse);
+    background: var(--color-scene-forest);
+  }
+
+  &--kiosk {
+    color: var(--color-text-primary);
+    background: var(--color-scene-kiosk);
+  }
+
+  &--new {
+    color: var(--color-status-new-text);
+    background: var(--color-status-new);
+  }
+
+  &--limited {
+    color: var(--color-status-limited-text);
+    background: var(--color-status-limited);
+  }
+
+  &--sold-out {
+    color: var(--color-status-sold-out-text);
+    background: var(--color-status-sold-out);
+  }
+
+  &--small {
+    min-height: 24px;
+    padding: 2px 10px;
+  }
+
+  &--large {
+    min-height: 36px;
+    padding-inline: var(--spacing-s);
+    font-size: var(--font-size-xs);
+  }
+
+  &--outline {
+    color: var(--color-scene-forest);
+    border: var(--border-width-thin) solid var(--color-scene-forest);
+    background: transparent;
+  }
+
+  &--square {
+    border-radius: var(--radius-small);
+  }
+
+  &--count {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    min-width: 24px;
+    min-height: 24px;
+    padding: 2px;
+    color: var(--color-text-inverse);
+    border: 2px solid var(--color-background);
+    background: var(--color-primary);
+  }
+}
+
+// --- Cartes ------------------------------------------------------------------
+.l-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-m);
+  margin-top: var(--spacing-s);
+
+  @media (min-width: map.get(v.$breakpoints, 'tablet')) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: map.get(v.$breakpoints, 'desktop')) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  &--variants {
+    margin-top: var(--spacing-s);
+  }
+}
+
+.card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: var(--border-width-thin) solid var(--color-border);
+  border-radius: var(--radius-medium);
+  background: var(--color-background);
+
+  &__image {
+    width: 100%;
+    height: var(--size-card-image-height);
+    object-fit: cover;
+    background: var(--color-background-alt);
+  }
+
+  &__body {
     display: flex;
+    flex: 1;
     flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-s);
+  }
+
+  &__title {
+    margin-top: 2px;
+    font-size: var(--font-size-s);
+    line-height: var(--line-height-s);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+  }
+
+  &__meta {
+    font-size: var(--font-size-xxs);
+    line-height: var(--line-height-xs);
+    color: var(--color-text-secondary);
+  }
+
+  &__link {
+    margin-top: auto;
+    padding-top: 2px;
+    font-size: var(--font-size-xxs);
+    line-height: var(--line-height-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-primary-hover);
+      text-decoration: underline;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-s);
+    border-top: var(--border-width-thin) solid var(--color-border);
+  }
+
+  &--featured {
+    align-self: start;
+    border-top: 5px solid var(--color-scene-kiosk);
+  }
+
+  &--photo {
+    .card__image {
+      height: 190px;
+    }
+  }
+
+  &--lake {
+    border-top: 4px solid var(--color-scene-lake);
+  }
+
+  &--forest {
+    border-top: 4px solid var(--color-scene-forest);
+  }
+}
+
+// --- Champs de formulaire ----------------------------------------------------
+.l-form-demo {
+  display: grid;
+  width: 100%;
+  max-width: var(--size-form-field-width);
+  gap: var(--spacing-m);
+}
+
+.form-field {
+  display: flex;
+  width: 100%;
+  max-width: var(--size-form-field-width);
+  flex-direction: column;
+  gap: var(--spacing-xs);
+
+  &__label {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+  }
+
+  &__input {
+    width: 100%;
+    min-height: var(--size-button-height);
+    padding: 9px 12px;
+    border: var(--border-width-thin) solid var(--color-border-field);
+    border-radius: var(--radius-small);
+    color: var(--color-text-body);
+    background: var(--color-background);
+
+    &::placeholder {
+      color: var(--color-text-secondary);
+    }
+
+    &:focus-visible {
+      outline: var(--border-width-thick) solid var(--color-scene-lake);
+      outline-offset: 2px;
+    }
+  }
+
+  &__help,
+  &__error {
+    font-size: var(--font-size-xxs);
+    line-height: var(--line-height-xs);
+  }
+
+  &__help {
+    color: var(--color-text-secondary);
+  }
+
+  &__error {
+    color: var(--color-error);
+  }
+
+  &.has-error {
+    .form-field__input {
+      border-color: var(--color-error);
+    }
+  }
+
+}
+
+.form-field__checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+  color: var(--color-text-body);
+
+  input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+  }
+}
+
+// --- Filtres -----------------------------------------------------------------
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+
+  &__item {
+    min-height: 36px;
+    padding: 6px 14px;
+    border: var(--border-width-thin) solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xxs);
+    line-height: var(--line-height-xs);
+    color: var(--color-text-body);
+    background: var(--color-background);
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    &:focus-visible {
+      outline: var(--border-width-thick) solid var(--color-scene-lake);
+      outline-offset: 2px;
+    }
+
+    &.is-active {
+      border-color: var(--color-text-primary);
+      color: var(--color-text-inverse);
+      background: var(--color-text-primary);
+    }
+  }
+}
+
+// --- Questions fréquentes ----------------------------------------------------
+.faq-list {
+  display: grid;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-l);
+}
+
+.faq {
+  border: var(--border-width-thin) solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-background);
+
+  &__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: var(--spacing-s);
+    padding: var(--spacing-s);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: '+';
+      flex: 0 0 auto;
+      font-size: var(--font-size-l);
+      line-height: 1;
+      color: var(--color-primary);
+    }
+  }
+
+  &[open] .faq__question::after {
+    content: '−';
+  }
+
+  &__answer {
+    padding: 0 var(--spacing-s) var(--spacing-s);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-s);
+    color: var(--color-text-body);
   }
 }
 
 // --- Pastille de couleur -----------------------------------------------------
 // Chaque modificateur fournit la couleur (var) et le texte de sa valeur (Sass).
 .l-swatch {
-  overflow: hidden;
-  border: var(--border-width-thin) solid var(--color-border);
-  border-radius: var(--radius-medium);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  text-align: center;
 
-  &__chip {
-    height: var(--size-swatch-chip);
+  &__dot {
+    width: var(--size-swatch-dot);
+    height: var(--size-swatch-dot);
+    border: var(--border-width-thin) solid var(--color-border);
+    border-radius: var(--radius-full);
     background: var(--swatch-color);
   }
 
-  &__body {
-    padding: var(--spacing-xs) var(--spacing-s);
-  }
-
-  &__name {
-    font-size: var(--font-size-xs);
-    line-height: var(--line-height-xs);
-    font-weight: var(--font-weight-bold);
-    overflow-wrap: anywhere;
-  }
-
+  &__name,
   &__value {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-xxs);
     line-height: var(--line-height-xs);
     color: var(--color-text-secondary);
+  }
 
-    &::after {
-      content: var(--swatch-value);
-    }
+  &__value::after {
+    content: var(--swatch-value);
   }
 
   &--text-primary {
@@ -108,10 +636,6 @@
     --swatch-color: var(--color-text-secondary);
     --swatch-value: "#{map.get(v.$colors, 'text-secondary')}";
   }
-  &--background {
-    --swatch-color: var(--color-background);
-    --swatch-value: "#{map.get(v.$colors, 'background')}";
-  }
   &--background-alt {
     --swatch-color: var(--color-background-alt);
     --swatch-value: "#{map.get(v.$colors, 'background-alt')}";
@@ -119,10 +643,6 @@
   &--border {
     --swatch-color: var(--color-border);
     --swatch-value: "#{map.get(v.$colors, 'border')}";
-  }
-  &--border-field {
-    --swatch-color: var(--color-border-field);
-    --swatch-value: "#{map.get(v.$colors, 'border-field')}";
   }
   &--primary {
     --swatch-color: var(--color-primary);
@@ -142,92 +662,115 @@
   }
 }
 
-// --- Échelle typographique ---------------------------------------------------
-.l-type {
+// --- Couleur de scène (échantillon rectangulaire avec son nom dedans) --------
+.l-scene {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--spacing-xs) var(--spacing-m);
+  flex-direction: column;
+  gap: var(--spacing-xs);
 
-  &__sample {
-    font-size: var(--type-size);
-    line-height: var(--type-line);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-primary);
-    overflow-wrap: anywhere;
-  }
-
-  &__name {
+  &__chip {
+    display: flex;
+    align-items: center;
+    width: var(--size-scene-swatch-width);
+    height: var(--size-scene-swatch-height);
+    padding-inline: var(--spacing-s);
+    border-radius: var(--radius-small);
     font-size: var(--font-size-xs);
     line-height: var(--line-height-xs);
     font-weight: var(--font-weight-bold);
+    color: var(--scene-text);
+    background: var(--scene-bg);
   }
 
   &__value {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-xxs);
     line-height: var(--line-height-xs);
     color: var(--color-text-secondary);
 
     &::after {
-      content: var(--type-value);
+      content: var(--scene-value);
     }
   }
 
-  &--xxl {
-    --type-size: var(--font-size-xxl);
-    --type-line: var(--line-height-xxl);
-    --type-value: "#{map.get(v.$font-sizes, 'xxl')} / #{map.get(v.$line-heights, 'xxl')}";
+  &--lake {
+    --scene-bg: var(--color-scene-lake);
+    --scene-text: var(--color-text-inverse);
+    --scene-value: "#{map.get(v.$colors, 'scene-lake')}";
   }
-  &--xl {
-    --type-size: var(--font-size-xl);
-    --type-line: var(--line-height-xl);
-    --type-value: "#{map.get(v.$font-sizes, 'xl')} / #{map.get(v.$line-heights, 'xl')}";
+  &--forest {
+    --scene-bg: var(--color-scene-forest);
+    --scene-text: var(--color-text-inverse);
+    --scene-value: "#{map.get(v.$colors, 'scene-forest')}";
   }
-  &--l {
-    --type-size: var(--font-size-l);
-    --type-line: var(--line-height-l);
-    --type-value: "#{map.get(v.$font-sizes, 'l')} / #{map.get(v.$line-heights, 'l')}";
-  }
-  &--m {
-    --type-size: var(--font-size-m);
-    --type-line: var(--line-height-m);
-    --type-value: "#{map.get(v.$font-sizes, 'm')} / #{map.get(v.$line-heights, 'm')}";
-  }
-  &--s {
-    --type-size: var(--font-size-s);
-    --type-line: var(--line-height-s);
-    --type-value: "#{map.get(v.$font-sizes, 's')} / #{map.get(v.$line-heights, 's')}";
-  }
-  &--xs {
-    --type-size: var(--font-size-xs);
-    --type-line: var(--line-height-xs);
-    --type-value: "#{map.get(v.$font-sizes, 'xs')} / #{map.get(v.$line-heights, 'xs')}";
+  &--kiosk {
+    --scene-bg: var(--color-scene-kiosk);
+    --scene-text: var(--color-text-primary);
+    --scene-value: "#{map.get(v.$colors, 'scene-kiosk')}";
   }
 }
 
-// --- Échelle des espacements -------------------------------------------------
+// --- Exemple typographique (le nombre affiché est lu dans la map des tailles) -
+.l-sample {
+  font-size: var(--sample-size);
+  line-height: var(--sample-line);
+  font-weight: var(--sample-weight);
+  color: var(--sample-color);
+
+  &::after {
+    content: var(--sample-number);
+  }
+
+  &--title {
+    --sample-size: var(--font-size-xl);
+    --sample-line: var(--line-height-xl);
+    --sample-weight: var(--font-weight-bold);
+    --sample-color: var(--color-text-primary);
+    --sample-number: " #{math.div(map.get(v.$font-sizes, 'xl'), 1px)}";
+  }
+  &--subtitle {
+    --sample-size: var(--font-size-l);
+    --sample-line: var(--line-height-l);
+    --sample-weight: var(--font-weight-bold);
+    --sample-color: var(--color-text-primary);
+    --sample-number: " #{math.div(map.get(v.$font-sizes, 'l'), 1px)}";
+  }
+  &--intro {
+    --sample-size: var(--font-size-m);
+    --sample-line: var(--line-height-m);
+    --sample-weight: var(--font-weight-regular);
+    --sample-color: var(--color-text-body);
+    --sample-number: " #{math.div(map.get(v.$font-sizes, 'm'), 1px)}";
+  }
+  &--body {
+    --sample-size: var(--font-size-s);
+    --sample-line: var(--line-height-s);
+    --sample-weight: var(--font-weight-regular);
+    --sample-color: var(--color-text-body);
+    --sample-number: " #{math.div(map.get(v.$font-sizes, 's'), 1px)}";
+  }
+  &--small {
+    --sample-size: var(--font-size-xs);
+    --sample-line: var(--line-height-xs);
+    --sample-weight: var(--font-weight-regular);
+    --sample-color: var(--color-text-secondary);
+    --sample-number: " #{math.div(map.get(v.$font-sizes, 'xs'), 1px)}";
+  }
+}
+
+// --- Échelle des espacements (carré de la taille du jeton + sa valeur) --------
 .l-space {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--spacing-xs) var(--spacing-m);
+  align-items: flex-end;
+  gap: var(--spacing-xs);
 
-  &__bar {
+  &__square {
     width: var(--space-size);
-    max-width: 100%;
-    height: var(--size-space-bar);
-    border-radius: var(--radius-small);
+    height: var(--space-size);
     background: var(--color-primary);
   }
 
-  &__name {
-    font-size: var(--font-size-xs);
-    line-height: var(--line-height-xs);
-    font-weight: var(--font-weight-bold);
-  }
-
   &__value {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-xxs);
     line-height: var(--line-height-xs);
     color: var(--color-text-secondary);
 

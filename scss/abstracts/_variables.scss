@@ -1,3 +1,11 @@
+// =============================================================================
+// abstracts/_variables.scss
+// Rôle : source unique des valeurs de conception (jetons de conception).
+// Ce fichier ne produit aucun CSS : il ne contient que des variables et des maps Sass.
+// Les noms décrivent le RÔLE de la valeur, pas sa valeur (ex. "primary", pas "red").
+// Pour changer une valeur du site, on la modifie ici et nulle part ailleurs.
+// Valeurs relevées dans le cadre « 00 · Guide visuel » de la maquette Figma.
+// =============================================================================
 
 // -----------------------------------------------------------------------------
 // Couleurs
@@ -6,6 +14,7 @@ $colors: (
   'text-primary':      #1C1B2E, // titres
   'text-body':         #3A3950, // texte courant
   'text-secondary':    #6B6A80, // texte discret, légendes
+  'text-inverse':      #FFFFFF, // texte posé sur une couleur de scène sombre
   'background':        #FFFFFF, // fond de page
   'background-alt':    #F4F5F7, // fond de sections alternées, cartes
   'border':            #E3E5EA, // filets et séparateurs
@@ -14,20 +23,31 @@ $colors: (
   'primary-hover':     #A3311F, // actions principales au survol
   'accent':            #F4C95D, // mise en avant
   'error':             #B3261E, // messages d'erreur
+  'status-new':        #E5F2E8,
+  'status-new-text':   #28613B,
+  'status-limited':    #FFF2D3,
+  'status-limited-text': #76510C,
+  'status-sold-out':   #FBE7E5,
+  'status-sold-out-text': #9A302B,
+  'scene-lake':        #1F4E8C, // Scène du Lac (bleu profond)
+  'scene-forest':      #2F6B3A, // Scène de la Forêt (vert sapin)
+  'scene-kiosk':       #B87A1E, // Le Kiosque (ocre)
 );
 
 // -----------------------------------------------------------------------------
 // Typographie
 // -----------------------------------------------------------------------------
-$font-family-base: inter, sans-serif;
+$font-family-base: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
 $font-sizes: (
-  'xxl': 56px,
-  'xl':  40px,
-  'l':   28px,
-  'm':   20px,
-  's':   16px,
-  'xs':  14px,
+  'xxl':   56px, // titre principal
+  'xl':    40px, // titre de section
+  'l':     28px, // sous-titre
+  'm':     20px, // texte d'introduction
+  's':     16px, // texte courant
+  'xs':    14px, // petit texte
+  'label': 15px, // libellés et liens de la page des composants
+  'xxs':   12px, // légendes (nom et valeur d'un jeton)
 );
 
 $line-heights: (
@@ -66,27 +86,33 @@ $radii: (
 );
 
 // -----------------------------------------------------------------------------
-// Points de rupture (approche mobile-first : on part du mobile, on élargit)
-// -----------------------------------------------------------------------------
-$breakpoints: (
-  'mobile':  0,       // par défaut
-  'tablet':  768px,
-  'desktop': 1200px,
-);
-
-// -----------------------------------------------------------------------------
 // Épaisseurs de trait
 // -----------------------------------------------------------------------------
 $border-widths: (
-  'thin': 1px, // filets, bordures de cartes et de champs
+  'thin':  1px, // filets, bordures de cartes et de champs
+  'thick': 2px, // filet sous les titres de section
 );
 
 // -----------------------------------------------------------------------------
 // Dimensions (largeurs et hauteurs de référence)
 // -----------------------------------------------------------------------------
 $sizes: (
-  'container-max': 1200px, // largeur maximale du contenu des pages
-  'swatch-min':    160px,  // largeur minimale d'une pastille de la page composants
-  'swatch-chip':   80px,   // hauteur de l'échantillon de couleur
-  'space-bar':     16px,   // hauteur de la barre de l'échelle d'espacements
+  'container-max':        1200px, // largeur maximale du contenu des pages
+  'doc-label':            240px,  // colonne des libellés de la page des composants
+  'swatch-dot':           48px,   // pastille ronde d'une couleur
+  'scene-swatch-width':   180px,  // échantillon d'une couleur de scène
+  'scene-swatch-height':  52px,
+  'card-image-height':    220px,
+  'form-field-width':     360px,
+  'button-height':        44px,
+);
+
+// -----------------------------------------------------------------------------
+// Points de rupture (approche mobile-first : on part du mobile, on élargit)
+// Restent des variables Sass : var() ne fonctionne pas dans une @media.
+// -----------------------------------------------------------------------------
+$breakpoints: (
+  'mobile':  0,       // par défaut
+  'tablet':  768px,
+  'desktop': 1200px,
 );

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Composants · Festival Résonances</title>
+  <title>Bibliothèque de composants · Festival Résonances</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
@@ -12,166 +12,420 @@
 <body>
   <main class="l-doc">
 
-    <header class="l-doc__header">
-      <h1>Composants</h1>
-      <p>Bibliothèque de composants du festival Résonances : jetons, variantes et états.</p>
+    <!-- Titre de la page -->
+    <header class="l-doc__head">
+      <div class="l-doc__inner">
+        <p class="l-doc__crumb"><a class="l-doc__crumb-link" href="index.html">Accueil</a> / Bibliothèque de composants</p>
+        <h1 class="l-doc__title">Bibliothèque de composants</h1>
+        <p class="l-doc__lead">Tous les composants du site, avec leurs variantes et leurs états.</p>
+      </div>
     </header>
 
-    <section class="l-doc__section">
-      <h2 class="l-doc__title">Jetons de conception</h2>
-      <p class="l-doc__intro">Les valeurs de base du site : couleurs, typographie et espacements. Chaque valeur est définie une seule fois, dans les maps Sass.</p>
+    <div class="l-doc__inner">
 
-      <div class="l-doc__row">
-        <p class="l-doc__label">Couleurs</p>
-        <div class="l-doc__grid">
-          <div class="l-swatch l-swatch--text-primary">
-            <div class="l-swatch__chip"></div>
-            <div class="l-swatch__body">
-              <p class="l-swatch__name">--color-text-primary</p>
-              <p class="l-swatch__value"></p>
+      <!-- Sommaire -->
+      <nav class="l-doc__toc" aria-label="Sommaire de la bibliothèque">
+        <a class="l-doc__toc-link" href="#jetons">Jetons</a>
+        <a class="l-doc__toc-link" href="#boutons">Boutons</a>
+        <a class="l-doc__toc-link" href="#badges">Badges</a>
+        <a class="l-doc__toc-link" href="#cartes">Cartes</a>
+        <a class="l-doc__toc-link" href="#formulaires">Formulaires</a>
+        <a class="l-doc__toc-link" href="#filtres">Filtres</a>
+        <a class="l-doc__toc-link" href="#faq">Questions fréquentes</a>
+      </nav>
+
+      <!-- ===================== Jetons ===================== -->
+      <section class="l-doc__section" id="jetons">
+        <h2 class="l-doc__section-title">Jetons</h2>
+        <p class="l-doc__section-intro">Couleurs, typographie et espacements utilisés par tous les composants.</p>
+
+        <div class="l-doc__rows">
+
+          <div class="l-doc__row">
+            <p class="l-doc__label">Couleurs</p>
+            <div class="l-doc__items">
+              <div class="l-swatch l-swatch--text-primary">
+                <div class="l-swatch__dot"></div>
+                <p class="l-swatch__name">Texte principal</p>
+                <p class="l-swatch__value"></p>
+              </div>
+              <div class="l-swatch l-swatch--text-body">
+                <div class="l-swatch__dot"></div>
+                <p class="l-swatch__name">Texte courant</p>
+                <p class="l-swatch__value"></p>
+              </div>
+              <div class="l-swatch l-swatch--text-secondary">
+                <div class="l-swatch__dot"></div>
+                <p class="l-swatch__name">Texte secondaire</p>
+                <p class="l-swatch__value"></p>
+              </div>
+              <div class="l-swatch l-swatch--background-alt">
+                <div class="l-swatch__dot"></div>
+                <p class="l-swatch__name">Fond alterné</p>
+                <p class="l-swatch__value"></p>
+              </div>
+              <div class="l-swatch l-swatch--border">
+                <div class="l-swatch__dot"></div>
+                <p class="l-swatch__name">Bordures</p>
+                <p class="l-swatch__value"></p>
+              </div>
+              <div class="l-swatch l-swatch--primary">
+                <div class="l-swatch__dot"></div>
+                <p class="l-swatch__name">Principale</p>
+                <p class="l-swatch__value"></p>
+              </div>
+              <div class="l-swatch l-swatch--primary-hover">
+                <div class="l-swatch__dot"></div>
+                <p class="l-swatch__name">Survol</p>
+                <p class="l-swatch__value"></p>
+              </div>
+              <div class="l-swatch l-swatch--accent">
+                <div class="l-swatch__dot"></div>
+                <p class="l-swatch__name">Accent</p>
+                <p class="l-swatch__value"></p>
+              </div>
+              <div class="l-swatch l-swatch--error">
+                <div class="l-swatch__dot"></div>
+                <p class="l-swatch__name">Erreur</p>
+                <p class="l-swatch__value"></p>
+              </div>
             </div>
           </div>
-          <div class="l-swatch l-swatch--text-body">
-            <div class="l-swatch__chip"></div>
-            <div class="l-swatch__body">
-              <p class="l-swatch__name">--color-text-body</p>
-              <p class="l-swatch__value"></p>
+
+          <div class="l-doc__row">
+            <p class="l-doc__label">Scènes</p>
+            <div class="l-doc__items">
+              <div class="l-scene l-scene--lake">
+                <div class="l-scene__chip">Scène du Lac</div>
+                <p class="l-scene__value"></p>
+              </div>
+              <div class="l-scene l-scene--forest">
+                <div class="l-scene__chip">Scène de la Forêt</div>
+                <p class="l-scene__value"></p>
+              </div>
+              <div class="l-scene l-scene--kiosk">
+                <div class="l-scene__chip">Le Kiosque</div>
+                <p class="l-scene__value"></p>
+              </div>
             </div>
           </div>
-          <div class="l-swatch l-swatch--text-secondary">
-            <div class="l-swatch__chip"></div>
-            <div class="l-swatch__body">
-              <p class="l-swatch__name">--color-text-secondary</p>
-              <p class="l-swatch__value"></p>
+
+          <div class="l-doc__row">
+            <p class="l-doc__label">Typographie</p>
+            <div class="l-doc__items l-doc__items--baseline">
+              <p class="l-sample l-sample--title">Titre</p>
+              <p class="l-sample l-sample--subtitle">Sous-titre</p>
+              <p class="l-sample l-sample--intro">Introduction</p>
+              <p class="l-sample l-sample--body">Courant</p>
+              <p class="l-sample l-sample--small">Petit</p>
             </div>
           </div>
-          <div class="l-swatch l-swatch--background">
-            <div class="l-swatch__chip"></div>
-            <div class="l-swatch__body">
-              <p class="l-swatch__name">--color-background</p>
-              <p class="l-swatch__value"></p>
+
+          <div class="l-doc__row">
+            <p class="l-doc__label">Espacements</p>
+            <div class="l-doc__items l-doc__items--end">
+              <div class="l-space l-space--xs">
+                <div class="l-space__square"></div>
+                <p class="l-space__value"></p>
+              </div>
+              <div class="l-space l-space--s">
+                <div class="l-space__square"></div>
+                <p class="l-space__value"></p>
+              </div>
+              <div class="l-space l-space--m">
+                <div class="l-space__square"></div>
+                <p class="l-space__value"></p>
+              </div>
+              <div class="l-space l-space--l">
+                <div class="l-space__square"></div>
+                <p class="l-space__value"></p>
+              </div>
+              <div class="l-space l-space--xl">
+                <div class="l-space__square"></div>
+                <p class="l-space__value"></p>
+              </div>
             </div>
           </div>
-          <div class="l-swatch l-swatch--background-alt">
-            <div class="l-swatch__chip"></div>
-            <div class="l-swatch__body">
-              <p class="l-swatch__name">--color-background-alt</p>
-              <p class="l-swatch__value"></p>
+
+        </div>
+      </section>
+
+      <!-- ===================== Boutons (étape 3) ===================== -->
+      <section class="l-doc__section" id="boutons">
+        <h2 class="l-doc__section-title">Boutons</h2>
+        <p class="l-doc__section-intro">Un composant de base, des variantes de couleur et de taille, une icône facultative et des états.</p>
+
+        <div class="l-doc__rows">
+          <div class="l-doc__row">
+            <p class="l-doc__label">Variantes</p>
+            <div class="l-doc__items">
+              <button class="btn btn--primary" type="button">Réserver mon billet</button>
+              <button class="btn btn--secondary" type="button">Voir le programme</button>
+              <button class="btn btn--dark" type="button">Mon programme</button>
+              <button class="btn btn--outline" type="button">En savoir plus</button>
             </div>
           </div>
-          <div class="l-swatch l-swatch--border">
-            <div class="l-swatch__chip"></div>
-            <div class="l-swatch__body">
-              <p class="l-swatch__name">--color-border</p>
-              <p class="l-swatch__value"></p>
+          <div class="l-doc__row">
+            <p class="l-doc__label">Tailles</p>
+            <div class="l-doc__items">
+              <button class="btn btn--primary btn--small" type="button">Petit</button>
+              <button class="btn btn--primary" type="button">Standard</button>
+              <button class="btn btn--primary btn--large" type="button">Grand</button>
             </div>
           </div>
-          <div class="l-swatch l-swatch--border-field">
-            <div class="l-swatch__chip"></div>
-            <div class="l-swatch__body">
-              <p class="l-swatch__name">--color-border-field</p>
-              <p class="l-swatch__value"></p>
+          <div class="l-doc__row">
+            <p class="l-doc__label">Avec icône</p>
+            <div class="l-doc__items">
+              <button class="btn btn--primary" type="button"><span class="btn__icon" aria-hidden="true">♡</span> Ajouter au programme</button>
+              <button class="btn btn--dark" type="button"><span class="btn__icon" aria-hidden="true">＋</span> Ajouter</button>
+              <a class="btn btn--text" href="#cartes">Découvrir les artistes <span class="btn__icon" aria-hidden="true">→</span></a>
             </div>
           </div>
-          <div class="l-swatch l-swatch--primary">
-            <div class="l-swatch__chip"></div>
-            <div class="l-swatch__body">
-              <p class="l-swatch__name">--color-primary</p>
-              <p class="l-swatch__value"></p>
-            </div>
-          </div>
-          <div class="l-swatch l-swatch--primary-hover">
-            <div class="l-swatch__chip"></div>
-            <div class="l-swatch__body">
-              <p class="l-swatch__name">--color-primary-hover</p>
-              <p class="l-swatch__value"></p>
-            </div>
-          </div>
-          <div class="l-swatch l-swatch--accent">
-            <div class="l-swatch__chip"></div>
-            <div class="l-swatch__body">
-              <p class="l-swatch__name">--color-accent</p>
-              <p class="l-swatch__value"></p>
-            </div>
-          </div>
-          <div class="l-swatch l-swatch--error">
-            <div class="l-swatch__chip"></div>
-            <div class="l-swatch__body">
-              <p class="l-swatch__name">--color-error</p>
-              <p class="l-swatch__value"></p>
+          <div class="l-doc__row">
+            <p class="l-doc__label">États</p>
+            <div class="l-doc__items">
+              <button class="btn btn--primary" type="button">Normal</button>
+              <button class="btn btn--primary" type="button" disabled>Indisponible</button>
+              <span class="l-doc__hint">Survolez ou utilisez Tab pour voir le focus.</span>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="l-doc__row">
-        <p class="l-doc__label">Échelle typographique (taille / interlignage)</p>
-        <div class="l-doc__stack">
-          <div class="l-type l-type--xxl">
-            <p class="l-type__sample">Résonances</p>
-            <p class="l-type__name">--font-size-xxl</p>
-            <p class="l-type__value"></p>
+      <!-- ===================== Badges (étape 3) ===================== -->
+      <section class="l-doc__section" id="badges">
+        <h2 class="l-doc__section-title">Badges</h2>
+        <p class="l-doc__section-intro">Pour signaler une scène, un statut ou un nombre.</p>
+
+        <div class="l-doc__rows">
+          <div class="l-doc__row">
+            <p class="l-doc__label">Badge de base</p>
+            <div class="l-doc__items"><span class="badge">Badge</span></div>
           </div>
-          <div class="l-type l-type--xl">
-            <p class="l-type__sample">Résonances</p>
-            <p class="l-type__name">--font-size-xl</p>
-            <p class="l-type__value"></p>
+          <div class="l-doc__row">
+            <p class="l-doc__label">Scènes</p>
+            <div class="l-doc__items">
+              <span class="badge badge--lake">Scène du Lac</span>
+              <span class="badge badge--forest">Scène de la Forêt</span>
+              <span class="badge badge--kiosk">Le Kiosque</span>
+            </div>
           </div>
-          <div class="l-type l-type--l">
-            <p class="l-type__sample">Résonances</p>
-            <p class="l-type__name">--font-size-l</p>
-            <p class="l-type__value"></p>
+          <div class="l-doc__row">
+            <p class="l-doc__label">Statuts</p>
+            <div class="l-doc__items">
+              <span class="badge badge--new">Nouveau</span>
+              <span class="badge badge--limited">Dernières places</span>
+              <span class="badge badge--sold-out">Complet</span>
+            </div>
           </div>
-          <div class="l-type l-type--m">
-            <p class="l-type__sample">Résonances</p>
-            <p class="l-type__name">--font-size-m</p>
-            <p class="l-type__value"></p>
+          <div class="l-doc__row">
+            <p class="l-doc__label">Tailles</p>
+            <div class="l-doc__items">
+              <span class="badge badge--lake badge--small">Petit</span>
+              <span class="badge badge--lake badge--large">Grand</span>
+            </div>
           </div>
-          <div class="l-type l-type--s">
-            <p class="l-type__sample">Résonances</p>
-            <p class="l-type__name">--font-size-s</p>
-            <p class="l-type__value"></p>
+          <div class="l-doc__row">
+            <p class="l-doc__label">Styles</p>
+            <div class="l-doc__items">
+              <span class="badge badge--forest">Plein arrondi</span>
+              <span class="badge badge--forest badge--outline">Contour</span>
+              <span class="badge badge--kiosk badge--square">Angles droits</span>
+            </div>
           </div>
-          <div class="l-type l-type--xs">
-            <p class="l-type__sample">Résonances</p>
-            <p class="l-type__name">--font-size-xs</p>
-            <p class="l-type__value"></p>
+          <div class="l-doc__row">
+            <p class="l-doc__label">Compteur</p>
+            <div class="l-doc__items">
+              <button class="btn btn--dark btn--counter" type="button" aria-label="Mon programme, 3 concerts enregistrés">
+                <span class="btn__icon" aria-hidden="true">♡</span> Mon programme
+                <span class="badge badge--count" aria-hidden="true">3</span>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="l-doc__row">
-        <p class="l-doc__label">Échelle des espacements</p>
-        <div class="l-doc__stack">
-          <div class="l-space l-space--xs">
-            <div class="l-space__bar"></div>
-            <p class="l-space__name">--spacing-xs</p>
-            <p class="l-space__value"></p>
+      <!-- ===================== Cartes (étape 4) ===================== -->
+      <section class="l-doc__section" id="cartes">
+        <h2 class="l-doc__section-title">Cartes</h2>
+        <p class="l-doc__section-intro">La carte d’artiste, ses variantes, et les autres cartes du site.</p>
+
+        <div class="l-doc__examples">
+          <p class="l-doc__label">Carte de base</p>
+          <div class="l-card-grid">
+            <article class="card">
+              <img class="card__image" src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80" alt="Concert avec des lumières bleues sur scène" loading="lazy">
+              <div class="card__body">
+                <span class="badge badge--lake">Scène du Lac</span>
+                <h3 class="card__title">Marée Basse</h3>
+                <p class="card__meta">Rock · Ven. 9 · 20 h 15</p>
+                <a class="card__link" href="#faq">Voir la fiche <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+            <article class="card card--featured">
+              <div class="card__body">
+                <span class="badge badge--kiosk">Le Kiosque</span>
+                <h3 class="card__title">Clara Ninon Quartet</h3>
+                <p class="card__meta">Jazz vocal · Ven. 9 · 18 h 30</p>
+                <a class="card__link" href="#faq">Voir la fiche <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+            <article class="card">
+              <img class="card__image" src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=900&q=80" alt="Instruments et lumières chaudes sur une scène de concert" loading="lazy">
+              <div class="card__body">
+                <span class="badge badge--kiosk">Le Kiosque</span>
+                <h3 class="card__title">Cordes Sensibles et l’Ensemble du Kiosque</h3>
+                <p class="card__meta">Acoustique · Sam. 10 · 17 h 30</p>
+              </div>
+              <div class="card__actions">
+                <a class="btn btn--dark btn--small" href="#filtres">Voir la fiche</a>
+                <button class="btn btn--outline btn--small" type="button"><span class="btn__icon" aria-hidden="true">＋</span> Ajouter</button>
+              </div>
+            </article>
           </div>
-          <div class="l-space l-space--s">
-            <div class="l-space__bar"></div>
-            <p class="l-space__name">--spacing-s</p>
-            <p class="l-space__value"></p>
-          </div>
-          <div class="l-space l-space--m">
-            <div class="l-space__bar"></div>
-            <p class="l-space__name">--spacing-m</p>
-            <p class="l-space__value"></p>
-          </div>
-          <div class="l-space l-space--l">
-            <div class="l-space__bar"></div>
-            <p class="l-space__name">--spacing-l</p>
-            <p class="l-space__value"></p>
-          </div>
-          <div class="l-space l-space--xl">
-            <div class="l-space__bar"></div>
-            <p class="l-space__name">--spacing-xl</p>
-            <p class="l-space__value"></p>
+          <p class="l-doc__hint">Avec image · sans image · titre sur deux lignes et pied avec actions</p>
+
+          <p class="l-doc__label l-doc__label--spaced">Variantes</p>
+          <div class="l-card-grid l-card-grid--variants">
+            <article class="card card--photo card--lake">
+              <img class="card__image" src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=900&q=80" alt="Scène de festival illuminée en rouge" loading="lazy">
+              <div class="card__body">
+                <span class="badge badge--lake">Scène du Lac</span>
+                <h3 class="card__title">Lunaire</h3>
+                <p class="card__meta">Électro · Ven. 9 · 22 h 00</p>
+              </div>
+            </article>
+            <article class="card card--photo card--forest">
+              <img class="card__image" src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=900&q=80" alt="Groupe en concert sur une scène sombre" loading="lazy">
+              <div class="card__body">
+                <span class="badge badge--forest">Scène de la Forêt</span>
+                <h3 class="card__title">Brume</h3>
+                <p class="card__meta">Indie folk · Sam. 10 · 19 h 45</p>
+              </div>
+            </article>
+            <article class="card card--photo card--lake">
+              <img class="card__image" src="https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=900&q=80" alt="Lumières bleues projetées sur une scène" loading="lazy">
+              <div class="card__body">
+                <span class="badge badge--lake">Scène du Lac</span>
+                <h3 class="card__title">Sylve</h3>
+                <p class="card__meta">Pop · Dim. 11 · 21 h 15</p>
+              </div>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
+      <!-- ===================== Formulaires (étape 5) ===================== -->
+      <section class="l-doc__section" id="formulaires">
+        <h2 class="l-doc__section-title">Formulaires</h2>
+        <p class="l-doc__section-intro">Champ de saisie, liste déroulante et case à cocher, avec leurs états.</p>
+
+        <div class="l-doc__rows">
+          <div class="l-doc__row">
+            <p class="l-doc__label">Champ texte</p>
+            <div class="l-form-demo">
+              <div class="form-field">
+                <label class="form-field__label" for="demo-email">Adresse e-mail</label>
+                <input class="form-field__input" id="demo-email" name="email" type="email" placeholder="vous@exemple.fr">
+                <small class="form-field__help">Nous vous enverrons votre confirmation de réservation.</small>
+              </div>
+              <div class="form-field has-error">
+                <label class="form-field__label" for="demo-email-error">Adresse e-mail</label>
+                <input class="form-field__input" id="demo-email-error" name="email-error" type="email" value="adresse-invalide" aria-invalid="true" aria-describedby="demo-email-error-message">
+                <small class="form-field__error" id="demo-email-error-message">Veuillez saisir une adresse e-mail valide.</small>
+              </div>
+            </div>
+          </div>
+          <div class="l-doc__row">
+            <p class="l-doc__label">Liste déroulante</p>
+            <div class="form-field">
+              <label class="form-field__label" for="demo-scene">Choisir une scène</label>
+              <select class="form-field__input" id="demo-scene" name="scene">
+                <option value="">Toutes les scènes</option>
+                <option>Scène du Lac</option>
+                <option>Scène de la Forêt</option>
+                <option>Le Kiosque</option>
+              </select>
+            </div>
+          </div>
+          <div class="l-doc__row">
+            <p class="l-doc__label">Case à cocher</p>
+            <label class="form-field__checkbox">
+              <input type="checkbox" name="newsletter">
+              <span>Recevoir les actualités du festival</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Filtres (étape 5) ===================== -->
+      <section class="l-doc__section" id="filtres">
+        <h2 class="l-doc__section-title">Filtres</h2>
+        <p class="l-doc__section-intro">Groupe de boutons qui filtre le programme ; un seul filtre est sélectionné à la fois.</p>
+
+        <div class="l-doc__rows">
+          <div class="l-doc__row">
+            <p class="l-doc__label">Scène</p>
+            <div class="filter" role="group" aria-label="Filtrer par scène" data-filter-group>
+              <button class="filter__item is-active" type="button" aria-pressed="true" data-filter>Tout le programme</button>
+              <button class="filter__item" type="button" aria-pressed="false" data-filter>Scène du Lac</button>
+              <button class="filter__item" type="button" aria-pressed="false" data-filter>Scène de la Forêt</button>
+              <button class="filter__item" type="button" aria-pressed="false" data-filter>Le Kiosque</button>
+            </div>
+          </div>
+          <div class="l-doc__row">
+            <p class="l-doc__label">Jour</p>
+            <div class="filter" role="group" aria-label="Filtrer par jour" data-filter-group>
+              <button class="filter__item is-active" type="button" aria-pressed="true" data-filter>Tous les jours</button>
+              <button class="filter__item" type="button" aria-pressed="false" data-filter>Ven. 9</button>
+              <button class="filter__item" type="button" aria-pressed="false" data-filter>Sam. 10</button>
+              <button class="filter__item" type="button" aria-pressed="false" data-filter>Dim. 11</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Questions fréquentes (étape 5) ===================== -->
+      <section class="l-doc__section" id="faq">
+        <h2 class="l-doc__section-title">Questions fréquentes</h2>
+        <p class="l-doc__section-intro">Accordéon : chaque question s’ouvre et se ferme indépendamment.</p>
+
+        <div class="faq-list">
+          <details class="faq" open>
+            <summary class="faq__question">Où se déroule le festival Résonances ?</summary>
+            <div class="faq__answer">
+              <p>Le festival se déroule au cœur du parc des Rives. Les trois scènes sont accessibles à pied depuis l’entrée principale et sont signalées sur place.</p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary class="faq__question">Comment ajouter un concert à mon programme ?</summary>
+            <div class="faq__answer">
+              <p>Utilisez le bouton « Ajouter » sur une carte d’artiste. Vous retrouverez ensuite vos concerts enregistrés dans « Mon programme ».</p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary class="faq__question">Les billets sont-ils échangeables ?</summary>
+            <div class="faq__answer">
+              <p>Les conditions d’échange et de remboursement sont précisées lors de l’achat et dans l’e-mail de confirmation de votre billet.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+    </div>
   </main>
+  <script>
+    document.querySelectorAll('[data-filter-group]').forEach((group) => {
+      group.querySelectorAll('[data-filter]').forEach((filter) => {
+        filter.addEventListener('click', () => {
+          group.querySelectorAll('[data-filter]').forEach((item) => {
+            const isActive = item === filter;
+            item.classList.toggle('is-active', isActive);
+            item.setAttribute('aria-pressed', String(isActive));
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>

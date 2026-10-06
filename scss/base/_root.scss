@@ -22,10 +22,14 @@
 @use '../abstracts/variables' as v;
 
 :root {
-  // --- Couleurs --------------------------------------------------------------
+  // --- Police -----------------------------------------------------------------
+  --font-family-base: #{v.$font-family-base};
+
+  // --- Couleurs ---------------------------------------------------------------
   --color-text-primary: #{map.get(v.$colors, 'text-primary')};
   --color-text-body: #{map.get(v.$colors, 'text-body')};
   --color-text-secondary: #{map.get(v.$colors, 'text-secondary')};
+  --color-text-inverse: #{map.get(v.$colors, 'text-inverse')};
   --color-background: #{map.get(v.$colors, 'background')};
   --color-background-alt: #{map.get(v.$colors, 'background-alt')};
   --color-border: #{map.get(v.$colors, 'border')};
@@ -34,19 +38,27 @@
   --color-primary-hover: #{map.get(v.$colors, 'primary-hover')};
   --color-accent: #{map.get(v.$colors, 'accent')};
   --color-error: #{map.get(v.$colors, 'error')};
+  --color-status-new: #{map.get(v.$colors, 'status-new')};
+  --color-status-new-text: #{map.get(v.$colors, 'status-new-text')};
+  --color-status-limited: #{map.get(v.$colors, 'status-limited')};
+  --color-status-limited-text: #{map.get(v.$colors, 'status-limited-text')};
+  --color-status-sold-out: #{map.get(v.$colors, 'status-sold-out')};
+  --color-status-sold-out-text: #{map.get(v.$colors, 'status-sold-out-text')};
+  --color-scene-lake: #{map.get(v.$colors, 'scene-lake')};
+  --color-scene-forest: #{map.get(v.$colors, 'scene-forest')};
+  --color-scene-kiosk: #{map.get(v.$colors, 'scene-kiosk')};
 
-  // --- Typographie : police ---------------------------------------------------
-  --font-family-base: #{v.$font-family-base};
-
-  // --- Typographie : tailles --------------------------------------------------
+  // --- Tailles de texte -------------------------------------------------------
   --font-size-xxl: #{map.get(v.$font-sizes, 'xxl')};
   --font-size-xl: #{map.get(v.$font-sizes, 'xl')};
   --font-size-l: #{map.get(v.$font-sizes, 'l')};
   --font-size-m: #{map.get(v.$font-sizes, 'm')};
   --font-size-s: #{map.get(v.$font-sizes, 's')};
   --font-size-xs: #{map.get(v.$font-sizes, 'xs')};
+  --font-size-label: #{map.get(v.$font-sizes, 'label')};
+  --font-size-xxs: #{map.get(v.$font-sizes, 'xxs')};
 
-  // --- Typographie : interlignages --------------------------------------------
+  // --- Interlignages ----------------------------------------------------------
   --line-height-xxl: #{map.get(v.$line-heights, 'xxl')};
   --line-height-xl: #{map.get(v.$line-heights, 'xl')};
   --line-height-l: #{map.get(v.$line-heights, 'l')};
@@ -54,7 +66,7 @@
   --line-height-s: #{map.get(v.$line-heights, 's')};
   --line-height-xs: #{map.get(v.$line-heights, 'xs')};
 
-  // --- Typographie : graisses -------------------------------------------------
+  // --- Graisses ---------------------------------------------------------------
   --font-weight-regular: #{map.get(v.$font-weights, 'regular')};
   --font-weight-bold: #{map.get(v.$font-weights, 'bold')};
   --font-weight-heavy: #{map.get(v.$font-weights, 'heavy')};
@@ -70,14 +82,18 @@
   --radius-small: #{map.get(v.$radii, 'small')};
   --radius-medium: #{map.get(v.$radii, 'medium')};
   --radius-full: #{map.get(v.$radii, 'full')};
-  
+
   // --- Épaisseurs de trait ----------------------------------------------------
   --border-width-thin: #{map.get(v.$border-widths, 'thin')};
+  --border-width-thick: #{map.get(v.$border-widths, 'thick')};
 
   // --- Dimensions -------------------------------------------------------------
   --size-container-max: #{map.get(v.$sizes, 'container-max')};
-  --size-swatch-min: #{map.get(v.$sizes, 'swatch-min')};
-  --size-swatch-chip: #{map.get(v.$sizes, 'swatch-chip')};
-  --size-space-bar: #{map.get(v.$sizes, 'space-bar')};
+  --size-doc-label: #{map.get(v.$sizes, 'doc-label')};
+  --size-swatch-dot: #{map.get(v.$sizes, 'swatch-dot')};
+  --size-scene-swatch-width: #{map.get(v.$sizes, 'scene-swatch-width')};
+  --size-scene-swatch-height: #{map.get(v.$sizes, 'scene-swatch-height')};
+  --size-card-image-height: #{map.get(v.$sizes, 'card-image-height')};
+  --size-form-field-width: #{map.get(v.$sizes, 'form-field-width')};
+  --size-button-height: #{map.get(v.$sizes, 'button-height')};
 }
-
