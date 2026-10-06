@@ -1,0 +1,92 @@
+
+// -----------------------------------------------------------------------------
+// Couleurs
+// -----------------------------------------------------------------------------
+$colors: (
+  'text-primary':      #1C1B2E, // titres
+  'text-body':         #3A3950, // texte courant
+  'text-secondary':    #6B6A80, // texte discret, légendes
+  'background':        #FFFFFF, // fond de page
+  'background-alt':    #F4F5F7, // fond de sections alternées, cartes
+  'border':            #E3E5EA, // filets et séparateurs
+  'border-field':      #CBD0D8, // bordure des champs de formulaire
+  'primary':           #C8402A, // actions principales
+  'primary-hover':     #A3311F, // actions principales au survol
+  'accent':            #F4C95D, // mise en avant
+  'error':             #B3261E, // messages d'erreur
+);
+
+// -----------------------------------------------------------------------------
+// Typographie
+// -----------------------------------------------------------------------------
+$font-family-base: inter, sans-serif;
+
+$font-sizes: (
+  'xxl': 56px,
+  'xl':  40px,
+  'l':   28px,
+  'm':   20px,
+  's':   16px,
+  'xs':  14px,
+);
+
+$line-heights: (
+  'xxl': 64px,
+  'xl':  48px,
+  'l':   36px,
+  'm':   32px,
+  's':   26px,
+  'xs':  22px,
+);
+
+$font-weights: (
+  'regular': 400,
+  'bold':    700,
+  'heavy':   800,
+);
+
+// -----------------------------------------------------------------------------
+// Espacements
+// -----------------------------------------------------------------------------
+$spacings: (
+  'xs': 8px,
+  's':  16px,
+  'm':  24px,
+  'l':  40px,
+  'xl': 64px,
+);
+
+// -----------------------------------------------------------------------------
+// Rayons de bordure
+// -----------------------------------------------------------------------------
+$radii: (
+  'small':  6px,
+  'medium': 12px,
+  'full':   999px, // pastilles, boutons arrondis
+);
+
+// -----------------------------------------------------------------------------
+// Points de rupture (approche mobile-first : on part du mobile, on élargit)
+// -----------------------------------------------------------------------------
+$breakpoints: (
+  'mobile':  0,       // par défaut
+  'tablet':  768px,
+  'desktop': 1200px,
+);
+
+// -----------------------------------------------------------------------------
+// Épaisseurs de trait
+// -----------------------------------------------------------------------------
+$border-widths: (
+  'thin': 1px, // filets, bordures de cartes et de champs
+);
+
+// -----------------------------------------------------------------------------
+// Dimensions (largeurs et hauteurs de référence)
+// -----------------------------------------------------------------------------
+$sizes: (
+  'container-max': 1200px, // largeur maximale du contenu des pages
+  'swatch-min':    160px,  // largeur minimale d'une pastille de la page composants
+  'swatch-chip':   80px,   // hauteur de l'échantillon de couleur
+  'space-bar':     16px,   // hauteur de la barre de l'échelle d'espacements
+);

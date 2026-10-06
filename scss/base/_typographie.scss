@@ -1,0 +1,43 @@
+@use 'sass:map';
+@use '../abstracts/variables' as v;
+
+body {
+  font-family: v.$font-family-base;
+  font-size: map.get(v.$font-sizes, 's');
+  line-height: map.get(v.$line-heights, 's');
+  font-weight: map.get(v.$font-weights, 'regular');
+  color: map.get(v.$colors, 'text-body');
+}
+
+h1 {
+  font-size: map.get(v.$font-sizes, 'xxl');
+  line-height: map.get(v.$line-heights, 'xxl');
+  font-weight: map.get(v.$font-weights, 'heavy');
+  color: map.get(v.$colors, 'text-primary');
+}
+
+h2 {
+  font-size: map.get(v.$font-sizes, 'xl');
+  line-height: map.get(v.$line-heights, 'xl');
+  font-weight: map.get(v.$font-weights, 'bold');
+  color: map.get(v.$colors, 'text-primary');
+}
+
+h3 {
+  font-size: map.get(v.$font-sizes, 'l');
+  line-height: map.get(v.$line-heights, 'l');
+  font-weight: map.get(v.$font-weights, 'bold');
+  color: map.get(v.$colors, 'text-primary');
+}
+
+h4 {
+  font-size: map.get(v.$font-sizes, 'm');
+  line-height: map.get(v.$line-heights, 'm');
+  font-weight: map.get(v.$font-weights, 'regular');
+}
+
+small {
+  font-size: map.get(v.$font-sizes, 'xs');
+  line-height: map.get(v.$line-heights, 'xs');
+  color: map.get(v.$colors, 'text-secondary');
+}

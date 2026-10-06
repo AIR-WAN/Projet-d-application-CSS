@@ -1,0 +1,259 @@
+// =============================================================================
+// layout/_doc.scss
+// Rôle : mise en page de la page composants.html (guide de style) : conteneur,
+// sections, lignes d'exemples, et présentation des jetons (couleurs, échelle
+// typographique, échelle des espacements).
+// Aucune valeur en dur : tout vient des propriétés personnalisées (var(--...)).
+// Seules les VALEURS AFFICHÉES (ex. "#C8402A") sont relues dans les maps Sass,
+// car CSS ne peut pas écrire en texte la valeur d'une propriété : modifier une
+// map met donc la page à jour après compilation.
+// =============================================================================
+
+@use 'sass:map';
+@use '../abstracts/variables' as v;
+
+// --- Page, sections et lignes d'exemples -------------------------------------
+.l-doc {
+  max-width: var(--size-container-max);
+  margin: 0 auto;
+  padding: var(--spacing-l) var(--spacing-m);
+
+  &__header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  &__section {
+    padding-top: var(--spacing-l);
+    margin-bottom: var(--spacing-xl);
+    border-top: var(--border-width-thin) solid var(--color-border);
+  }
+
+  &__title {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  &__intro {
+    margin-bottom: var(--spacing-l);
+    color: var(--color-text-secondary);
+  }
+
+  &__row {
+    margin-bottom: var(--spacing-l);
+  }
+
+  &__label {
+    margin-bottom: var(--spacing-s);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--size-swatch-min), 1fr));
+    gap: var(--spacing-s);
+  }
+
+  &__stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+  }
+}
+
+// --- Pastille de couleur -----------------------------------------------------
+// Chaque modificateur fournit la couleur (var) et le texte de sa valeur (Sass).
+.l-swatch {
+  overflow: hidden;
+  border: var(--border-width-thin) solid var(--color-border);
+  border-radius: var(--radius-medium);
+
+  &__chip {
+    height: var(--size-swatch-chip);
+    background: var(--swatch-color);
+  }
+
+  &__body {
+    padding: var(--spacing-xs) var(--spacing-s);
+  }
+
+  &__name {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    font-weight: var(--font-weight-bold);
+    overflow-wrap: anywhere;
+  }
+
+  &__value {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    color: var(--color-text-secondary);
+
+    &::after {
+      content: var(--swatch-value);
+    }
+  }
+
+  &--text-primary {
+    --swatch-color: var(--color-text-primary);
+    --swatch-value: "#{map.get(v.$colors, 'text-primary')}";
+  }
+  &--text-body {
+    --swatch-color: var(--color-text-body);
+    --swatch-value: "#{map.get(v.$colors, 'text-body')}";
+  }
+  &--text-secondary {
+    --swatch-color: var(--color-text-secondary);
+    --swatch-value: "#{map.get(v.$colors, 'text-secondary')}";
+  }
+  &--background {
+    --swatch-color: var(--color-background);
+    --swatch-value: "#{map.get(v.$colors, 'background')}";
+  }
+  &--background-alt {
+    --swatch-color: var(--color-background-alt);
+    --swatch-value: "#{map.get(v.$colors, 'background-alt')}";
+  }
+  &--border {
+    --swatch-color: var(--color-border);
+    --swatch-value: "#{map.get(v.$colors, 'border')}";
+  }
+  &--border-field {
+    --swatch-color: var(--color-border-field);
+    --swatch-value: "#{map.get(v.$colors, 'border-field')}";
+  }
+  &--primary {
+    --swatch-color: var(--color-primary);
+    --swatch-value: "#{map.get(v.$colors, 'primary')}";
+  }
+  &--primary-hover {
+    --swatch-color: var(--color-primary-hover);
+    --swatch-value: "#{map.get(v.$colors, 'primary-hover')}";
+  }
+  &--accent {
+    --swatch-color: var(--color-accent);
+    --swatch-value: "#{map.get(v.$colors, 'accent')}";
+  }
+  &--error {
+    --swatch-color: var(--color-error);
+    --swatch-value: "#{map.get(v.$colors, 'error')}";
+  }
+}
+
+// --- Échelle typographique ---------------------------------------------------
+.l-type {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--spacing-xs) var(--spacing-m);
+
+  &__sample {
+    font-size: var(--type-size);
+    line-height: var(--type-line);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    overflow-wrap: anywhere;
+  }
+
+  &__name {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    font-weight: var(--font-weight-bold);
+  }
+
+  &__value {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    color: var(--color-text-secondary);
+
+    &::after {
+      content: var(--type-value);
+    }
+  }
+
+  &--xxl {
+    --type-size: var(--font-size-xxl);
+    --type-line: var(--line-height-xxl);
+    --type-value: "#{map.get(v.$font-sizes, 'xxl')} / #{map.get(v.$line-heights, 'xxl')}";
+  }
+  &--xl {
+    --type-size: var(--font-size-xl);
+    --type-line: var(--line-height-xl);
+    --type-value: "#{map.get(v.$font-sizes, 'xl')} / #{map.get(v.$line-heights, 'xl')}";
+  }
+  &--l {
+    --type-size: var(--font-size-l);
+    --type-line: var(--line-height-l);
+    --type-value: "#{map.get(v.$font-sizes, 'l')} / #{map.get(v.$line-heights, 'l')}";
+  }
+  &--m {
+    --type-size: var(--font-size-m);
+    --type-line: var(--line-height-m);
+    --type-value: "#{map.get(v.$font-sizes, 'm')} / #{map.get(v.$line-heights, 'm')}";
+  }
+  &--s {
+    --type-size: var(--font-size-s);
+    --type-line: var(--line-height-s);
+    --type-value: "#{map.get(v.$font-sizes, 's')} / #{map.get(v.$line-heights, 's')}";
+  }
+  &--xs {
+    --type-size: var(--font-size-xs);
+    --type-line: var(--line-height-xs);
+    --type-value: "#{map.get(v.$font-sizes, 'xs')} / #{map.get(v.$line-heights, 'xs')}";
+  }
+}
+
+// --- Échelle des espacements -------------------------------------------------
+.l-space {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-xs) var(--spacing-m);
+
+  &__bar {
+    width: var(--space-size);
+    max-width: 100%;
+    height: var(--size-space-bar);
+    border-radius: var(--radius-small);
+    background: var(--color-primary);
+  }
+
+  &__name {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    font-weight: var(--font-weight-bold);
+  }
+
+  &__value {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    color: var(--color-text-secondary);
+
+    &::after {
+      content: var(--space-value);
+    }
+  }
+
+  &--xs {
+    --space-size: var(--spacing-xs);
+    --space-value: "#{map.get(v.$spacings, 'xs')}";
+  }
+  &--s {
+    --space-size: var(--spacing-s);
+    --space-value: "#{map.get(v.$spacings, 's')}";
+  }
+  &--m {
+    --space-size: var(--spacing-m);
+    --space-value: "#{map.get(v.$spacings, 'm')}";
+  }
+  &--l {
+    --space-size: var(--spacing-l);
+    --space-value: "#{map.get(v.$spacings, 'l')}";
+  }
+  &--xl {
+    --space-size: var(--spacing-xl);
+    --space-value: "#{map.get(v.$spacings, 'xl')}";
+  }
+}

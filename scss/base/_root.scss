@@ -1,0 +1,83 @@
+// =============================================================================
+// base/_root.scss
+// Rôle : exposer les jetons de conception au navigateur sous forme de
+// propriétés personnalisées CSS, déclarées sur :root.
+//
+// Pourquoi deux systèmes ?
+// - Variables / maps Sass (abstracts/_variables.scss) : disparaissent à la
+//   compilation. Elles servent à ce que Sass doit calculer ou comparer à la
+//   compilation, et aux points de rupture : var() ne fonctionne pas dans une
+//   @media, donc les breakpoints restent uniquement des variables Sass.
+// - Propriétés personnalisées (ce fichier) : restent dans le CSS final.
+//   Elles sont lues par le navigateur, peuvent changer selon le contexte
+//   (thème d'une scène, mode sombre aux étapes 8 et 9) et sont visibles
+//   dans les outils de développement.
+//
+// La valeur n'est écrite qu'à un seul endroit (les maps) : ce fichier ne fait
+// que la relire. Les modules utilisent var(--...) et jamais de valeur en dur.
+// Convention de nommage : --categorie-role (voir NOMMAGE.md).
+// =============================================================================
+
+@use 'sass:map';
+@use '../abstracts/variables' as v;
+
+:root {
+  // --- Couleurs --------------------------------------------------------------
+  --color-text-primary: #{map.get(v.$colors, 'text-primary')};
+  --color-text-body: #{map.get(v.$colors, 'text-body')};
+  --color-text-secondary: #{map.get(v.$colors, 'text-secondary')};
+  --color-background: #{map.get(v.$colors, 'background')};
+  --color-background-alt: #{map.get(v.$colors, 'background-alt')};
+  --color-border: #{map.get(v.$colors, 'border')};
+  --color-border-field: #{map.get(v.$colors, 'border-field')};
+  --color-primary: #{map.get(v.$colors, 'primary')};
+  --color-primary-hover: #{map.get(v.$colors, 'primary-hover')};
+  --color-accent: #{map.get(v.$colors, 'accent')};
+  --color-error: #{map.get(v.$colors, 'error')};
+
+  // --- Typographie : police ---------------------------------------------------
+  --font-family-base: #{v.$font-family-base};
+
+  // --- Typographie : tailles --------------------------------------------------
+  --font-size-xxl: #{map.get(v.$font-sizes, 'xxl')};
+  --font-size-xl: #{map.get(v.$font-sizes, 'xl')};
+  --font-size-l: #{map.get(v.$font-sizes, 'l')};
+  --font-size-m: #{map.get(v.$font-sizes, 'm')};
+  --font-size-s: #{map.get(v.$font-sizes, 's')};
+  --font-size-xs: #{map.get(v.$font-sizes, 'xs')};
+
+  // --- Typographie : interlignages --------------------------------------------
+  --line-height-xxl: #{map.get(v.$line-heights, 'xxl')};
+  --line-height-xl: #{map.get(v.$line-heights, 'xl')};
+  --line-height-l: #{map.get(v.$line-heights, 'l')};
+  --line-height-m: #{map.get(v.$line-heights, 'm')};
+  --line-height-s: #{map.get(v.$line-heights, 's')};
+  --line-height-xs: #{map.get(v.$line-heights, 'xs')};
+
+  // --- Typographie : graisses -------------------------------------------------
+  --font-weight-regular: #{map.get(v.$font-weights, 'regular')};
+  --font-weight-bold: #{map.get(v.$font-weights, 'bold')};
+  --font-weight-heavy: #{map.get(v.$font-weights, 'heavy')};
+
+  // --- Espacements ------------------------------------------------------------
+  --spacing-xs: #{map.get(v.$spacings, 'xs')};
+  --spacing-s: #{map.get(v.$spacings, 's')};
+  --spacing-m: #{map.get(v.$spacings, 'm')};
+  --spacing-l: #{map.get(v.$spacings, 'l')};
+  --spacing-xl: #{map.get(v.$spacings, 'xl')};
+
+  // --- Rayons de bordure ------------------------------------------------------
+  --radius-small: #{map.get(v.$radii, 'small')};
+  --radius-medium: #{map.get(v.$radii, 'medium')};
+  --radius-full: #{map.get(v.$radii, 'full')};
+  
+  // --- Épaisseurs de trait ----------------------------------------------------
+  --border-width-thin: #{map.get(v.$border-widths, 'thin')};
+
+  // --- Dimensions -------------------------------------------------------------
+  --size-container-max: #{map.get(v.$sizes, 'container-max')};
+  --size-swatch-min: #{map.get(v.$sizes, 'swatch-min')};
+  --size-swatch-chip: #{map.get(v.$sizes, 'swatch-chip')};
+  --size-space-bar: #{map.get(v.$sizes, 'space-bar')};
+}
+
