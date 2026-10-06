@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Composants · Festival Résonances</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="l-doc">
+
+    <header class="l-doc__header">
+      <h1>Composants</h1>
+      <p>Bibliothèque de composants du festival Résonances : jetons, variantes et états.</p>
+    </header>
+
+    <section class="l-doc__section">
+      <h2 class="l-doc__title">Jetons de conception</h2>
+      <p class="l-doc__intro">Les valeurs de base du site : couleurs, typographie et espacements. Chaque valeur est définie une seule fois, dans les maps Sass.</p>
+
+      <div class="l-doc__row">
+        <p class="l-doc__label">Couleurs</p>
+        <div class="l-doc__grid">
+          <div class="l-swatch l-swatch--text-primary">
+            <div class="l-swatch__chip"></div>
+            <div class="l-swatch__body">
+              <p class="l-swatch__name">--color-text-primary</p>
+              <p class="l-swatch__value"></p>
+            </div>
+          </div>
+          <div class="l-swatch l-swatch--text-body">
+            <div class="l-swatch__chip"></div>
+            <div class="l-swatch__body">
+              <p class="l-swatch__name">--color-text-body</p>
+              <p class="l-swatch__value"></p>
+            </div>
+          </div>
+          <div class="l-swatch l-swatch--text-secondary">
+            <div class="l-swatch__chip"></div>
+            <div class="l-swatch__body">
+              <p class="l-swatch__name">--color-text-secondary</p>
+              <p class="l-swatch__value"></p>
+            </div>
+          </div>
+          <div class="l-swatch l-swatch--background">
+            <div class="l-swatch__chip"></div>
+            <div class="l-swatch__body">
+              <p class="l-swatch__name">--color-background</p>
+              <p class="l-swatch__value"></p>
+            </div>
+          </div>
+          <div class="l-swatch l-swatch--background-alt">
+            <div class="l-swatch__chip"></div>
+            <div class="l-swatch__body">
+              <p class="l-swatch__name">--color-background-alt</p>
+              <p class="l-swatch__value"></p>
+            </div>
+          </div>
+          <div class="l-swatch l-swatch--border">
+            <div class="l-swatch__chip"></div>
+            <div class="l-swatch__body">
+              <p class="l-swatch__name">--color-border</p>
+              <p class="l-swatch__value"></p>
+            </div>
+          </div>
+          <div class="l-swatch l-swatch--border-field">
+            <div class="l-swatch__chip"></div>
+            <div class="l-swatch__body">
+              <p class="l-swatch__name">--color-border-field</p>
+              <p class="l-swatch__value"></p>
+            </div>
+          </div>
+          <div class="l-swatch l-swatch--primary">
+            <div class="l-swatch__chip"></div>
+            <div class="l-swatch__body">
+              <p class="l-swatch__name">--color-primary</p>
+              <p class="l-swatch__value"></p>
+            </div>
+          </div>
+          <div class="l-swatch l-swatch--primary-hover">
+            <div class="l-swatch__chip"></div>
+            <div class="l-swatch__body">
+              <p class="l-swatch__name">--color-primary-hover</p>
+              <p class="l-swatch__value"></p>
+            </div>
+          </div>
+          <div class="l-swatch l-swatch--accent">
+            <div class="l-swatch__chip"></div>
+            <div class="l-swatch__body">
+              <p class="l-swatch__name">--color-accent</p>
+              <p class="l-swatch__value"></p>
+            </div>
+          </div>
+          <div class="l-swatch l-swatch--error">
+            <div class="l-swatch__chip"></div>
+            <div class="l-swatch__body">
+              <p class="l-swatch__name">--color-error</p>
+              <p class="l-swatch__value"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="l-doc__row">
+        <p class="l-doc__label">Échelle typographique (taille / interlignage)</p>
+        <div class="l-doc__stack">
+          <div class="l-type l-type--xxl">
+            <p class="l-type__sample">Résonances</p>
+            <p class="l-type__name">--font-size-xxl</p>
+            <p class="l-type__value"></p>
+          </div>
+          <div class="l-type l-type--xl">
+            <p class="l-type__sample">Résonances</p>
+            <p class="l-type__name">--font-size-xl</p>
+            <p class="l-type__value"></p>
+          </div>
+          <div class="l-type l-type--l">
+            <p class="l-type__sample">Résonances</p>
+            <p class="l-type__name">--font-size-l</p>
+            <p class="l-type__value"></p>
+          </div>
+          <div class="l-type l-type--m">
+            <p class="l-type__sample">Résonances</p>
+            <p class="l-type__name">--font-size-m</p>
+            <p class="l-type__value"></p>
+          </div>
+          <div class="l-type l-type--s">
+            <p class="l-type__sample">Résonances</p>
+            <p class="l-type__name">--font-size-s</p>
+            <p class="l-type__value"></p>
+          </div>
+          <div class="l-type l-type--xs">
+            <p class="l-type__sample">Résonances</p>
+            <p class="l-type__name">--font-size-xs</p>
+            <p class="l-type__value"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="l-doc__row">
+        <p class="l-doc__label">Échelle des espacements</p>
+        <div class="l-doc__stack">
+          <div class="l-space l-space--xs">
+            <div class="l-space__bar"></div>
+            <p class="l-space__name">--spacing-xs</p>
+            <p class="l-space__value"></p>
+          </div>
+          <div class="l-space l-space--s">
+            <div class="l-space__bar"></div>
+            <p class="l-space__name">--spacing-s</p>
+            <p class="l-space__value"></p>
+          </div>
+          <div class="l-space l-space--m">
+            <div class="l-space__bar"></div>
+            <p class="l-space__name">--spacing-m</p>
+            <p class="l-space__value"></p>
+          </div>
+          <div class="l-space l-space--l">
+            <div class="l-space__bar"></div>
+            <p class="l-space__name">--spacing-l</p>
+            <p class="l-space__value"></p>
+          </div>
+          <div class="l-space l-space--xl">
+            <div class="l-space__bar"></div>
+            <p class="l-space__name">--spacing-xl</p>
+            <p class="l-space__value"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
